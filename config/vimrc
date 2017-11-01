@@ -1,0 +1,110 @@
+" Show line numbers.
+set number
+
+" Always show current position.
+set ruler
+
+" Enable use of mouse.
+set mouse=a
+
+" Don't wrap lines.
+set nowrap
+
+" When editing, auto flow new text past 100th column.
+set textwidth=100
+
+" Default to 4-space soft tabs.
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
+" Free cursor.
+set virtualedit=all
+
+" Case insensitive search, except when using capital letters.
+set ignorecase
+set smartcase
+
+" Incremental search with highlighting.
+set hlsearch
+set incsearch
+
+" Smart indentation behavior.
+set autoindent
+set smartindent
+
+" Color/syntax highlighting.
+set t_Co=256
+syntax on
+colorscheme vividchalk
+highlight LineNr ctermfg=white ctermbg=235
+
+" Use ctrl-[hjkl] to select the active split.
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+" Ignore build artifacts.
+set wildignore=*.o,*.os,*.pyc,build/*
+
+" Highlight the 101st column, in order to help visually avoid long lines.
+set colorcolumn=101
+highlight ColorColumn ctermbg=235
+
+" Highlght trailing whitespace.
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+let c_space_errors=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins start.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Specify a directory for plugins.
+call plug#begin('~/.vim/plugged')
+
+" Fuzzy file finder. Remap <ctrl-f> to invoke. Also configure caching settings
+" in order to rebuilding the cache across sessions.
+Plug 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-f>'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
+
+" Easy alternation between cpp and header file with :A.
+Plug 'vim-scripts/a.vim'
+
+" Show all the tags in a file. Add key binding to open tagbar with ctrl-t.
+Plug 'majutsushi/tagbar'
+nmap <silent> <c-t> :TagbarToggle<CR>
+
+" Vim git integration.
+Plug 'https://github.com/tpope/vim-fugitive.git'
+
+" Vim integration with the rtags indexer. Create custom mappings for 'follow location' and
+" for 'find references'.
+Plug 'https://github.com/lyuts/vim-rtags'
+
+" Clang format. Map ctrl-i to format the current file. Map both in normal and visual mode.
+Plug 'https://github.com/rhysd/vim-clang-format'
+nmap <silent> <c-i> :ClangFormat<CR>
+vmap <silent> <c-i> :ClangFormat<CR>
+
+" Fancy status line.
+Plug 'https://github.com/vim-airline/vim-airline'
+
+" Autocompletion! oblitum's fork adds argument hints.
+Plug 'https://github.com/oblitum/YouCompleteMe',
+        \ {'do': 'python3 ./install.py --clang-completer --system-libclang'}
+
+" Show information about lines added, modified, removed in the margin.
+Plug 'https://github.com/airblade/vim-gitgutter'
+
+" Initialize plugin system.
+call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins end.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

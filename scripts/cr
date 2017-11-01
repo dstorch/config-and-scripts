@@ -1,0 +1,15 @@
+#!/bin/bash
+
+MSG=$(git log --pretty=oneline | head -n 1 | cut -d " " --complement -f 1)
+
+BASE_REV_NUM=$1
+if [ -z "$BASE_REV_NUM" ]
+then
+    BASE_REV_NUM=1
+fi
+
+BASE_REV=$(git log --pretty=oneline HEAD~$BASE_REV_NUM | head -n 1 | cut -d " " -f 1)
+
+FLAGS="--oauth2 -H 'mongodbcr.appspot.com' -y --check-clang-format --check-eslint --jira_user david.storch --git_similarity=100"
+
+echo python2 $HOME/kernel-tools/codereview/upload.py $FLAGS -t \"$MSG\" --rev $BASE_REV

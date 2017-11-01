@@ -1,0 +1,15 @@
+#!/bin/sh
+branch=$(git rev-parse --abbrev-ref HEAD)
+ticket=$(echo $branch | sed -n 's/^\([[:upper:]]*-[[:digit:]]*\).*$/\1/p')
+if [ -n "$ticket" ]; then
+    oldmsg="$(cat $1)"
+    oldticket=$(echo $oldmsg | sed -n 's/^\([[:upper:]]*-[[:digit:]]*\).*$/\1/p')
+    if [ -n "$oldticket" ]; then
+        # There was already a ticket number in the commit message.
+        exit 0
+    fi
+
+    # Branch has a ticket number, but message doesn't. Append ticket number.
+    newmsg="$ticket $oldmsg"
+    echo $newmsg > $1
+fi

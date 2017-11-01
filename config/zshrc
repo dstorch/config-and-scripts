@@ -1,0 +1,52 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=100000
+SAVEHIST=100000
+setopt appendhistory
+unsetopt beep
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/dstorch/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# Make prompt themes available.
+autoload -Uz promptinit
+promptinit
+
+# Handle ssh-agent stuff to avoid re-typing ssh key password.
+source $HOME/bin/ssh-agent-find.sh
+
+# Ask me before deleting data.
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Set default editor.
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin/mongo-versions/:$PATH
+
+alias -g smoke='python2 buildscripts/resmoke.py'
+
+# Ninja.
+export NINJA_STATUS='[%f/%t (%p) %es] ' # Format ninja status output.
+alias sconsninja='python2 buildscripts/scons.py MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" VARIANT_DIR=ninja CC=clang CXX=clang++ --config=force --link-model=dynamic --modules=ninja --icecream build.ninja'
+alias nj='ninja -j 400 '
+
+# antigen fanciness.
+source $HOME/bin/antigen.zsh
+antigen use oh-my-zsh
+antigen bundle git
+antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen theme robbyrussell
+antigen apply
+
+# fzf keybindings for fuzzy cntrl-r command history search.
+source /usr/share/fzf/key-bindings.zsh

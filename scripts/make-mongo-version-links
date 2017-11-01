@@ -1,0 +1,29 @@
+#!/bin/bash
+
+######################################################
+#
+# Make a bunch of symlinks to versions of the server
+# and tools installed by m.
+#
+# See https://github.com/aheckmann/m.
+#
+######################################################
+
+M_VERSIONS=/usr/local/m/versions
+D_BIN=$HOME/bin/mongo-versions
+
+for dir in $(find ${M_VERSIONS} -type d -name "bin")
+do
+    withoutbin=${dir%/bin}
+    version=$(basename ${withoutbin})
+    for progname in mongo mongod mongos mongodump mongorestore mongoimport mongoexport
+    do
+        linktomake=${progname}-${version}
+        if [ -L ${D_BIN}/${linktomake} ]; then
+            echo ${linktomake} already exists.
+        else
+            echo Making ${linktomake} link.
+            ln -s ${dir}/${progname} ${D_BIN}/${linktomake}
+        fi
+	done
+done
