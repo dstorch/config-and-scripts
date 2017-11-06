@@ -89,6 +89,8 @@ Plug 'https://github.com/lyuts/vim-rtags'
 
 " Clang format. Map ctrl-i to format the current file. Map both in normal and visual mode.
 Plug 'https://github.com/rhysd/vim-clang-format'
+let g:clang_format#command = 'clang-format-3.8'
+let g:clang_format#auto_format = 1
 nmap <silent> <c-i> :ClangFormat<CR>
 vmap <silent> <c-i> :ClangFormat<CR>
 
