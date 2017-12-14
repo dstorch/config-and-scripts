@@ -72,6 +72,7 @@ Plug 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_max_files = 0
 
 " Easy alternation between cpp and header file with :A.
 Plug 'vim-scripts/a.vim'
@@ -86,6 +87,9 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 " Vim integration with the rtags indexer. Create custom mappings for 'follow location' and
 " for 'find references'.
 Plug 'https://github.com/lyuts/vim-rtags'
+let g:rtagsUseLocationList = 0
+" Map ctrl-c to closing the QuickFix menu.
+nmap <silent> <c-c> :ccl<CR>
 
 " Clang format. Map ctrl-i to format the current file. Map both in normal and visual mode.
 Plug 'https://github.com/rhysd/vim-clang-format'
@@ -103,6 +107,9 @@ Plug 'https://github.com/oblitum/YouCompleteMe',
 
 " Show information about lines added, modified, removed in the margin.
 Plug 'https://github.com/airblade/vim-gitgutter'
+
+" Easy comment/uncomment. Use 'gc' in visual line mode to toggle whether the lines are commented.
+Plug 'https://github.com/tpope/vim-commentary'
 
 " Initialize plugin system.
 call plug#end()
