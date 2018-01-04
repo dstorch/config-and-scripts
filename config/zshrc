@@ -38,8 +38,10 @@ alias -g smoke='python2 buildscripts/resmoke.py'
 export NINJA_STATUS='[%f/%t (%p) %es] ' # Format ninja status output.
 alias sconsninja='python2 buildscripts/scons.py MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" VARIANT_DIR=ninja CC=clang CXX=clang++ --config=force --link-model=dynamic --modules=ninja --icecream build.ninja'
 alias sconsninjadebug='python2 buildscripts/scons.py MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" VARIANT_DIR=ninja CC=clang CXX=clang++ --config=force --dbg=on --opt=off --modules=ninja --icecream debug.ninja'
+alias sconsninjagcc='python2 buildscripts/scons.py MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" VARIANT_DIR=ninja CC=/opt/mongodbtoolchain/v2/bin/gcc CXX=/opt/mongodbtoolchain/v2/bin/g++ --config=force --modules=ninja --icecream gcc.ninja'
 alias nj='ninja -j 400 '
 alias njd='ninja -f debug.ninja -j 400 '
+alias njg='ninja -f gcc.ninja -j 400 '
 
 # antigen fanciness.
 source $HOME/bin/antigen.zsh
@@ -52,3 +54,16 @@ antigen apply
 
 # fzf keybindings for fuzzy cntrl-r command history search.
 source /usr/share/fzf/key-bindings.zsh
+
+# Git aliases.
+alias g='git '
+alias gc='git checkout '
+alias gcb='git checkout -t -b '
+alias gcm='git checkout master'
+alias gd='git diff'
+alias gm='git merge --ff-only '
+alias gp='git pull '
+alias gr='git rebase '
+alias gri='git rebase -i HEAD~'
+alias grm='git rebase master'
+alias gs='git status '
