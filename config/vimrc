@@ -48,7 +48,7 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " Ignore build artifacts.
-set wildignore=*.o,*.os,*.pyc,build/*
+set wildignore=*.o,*.os,*.pyc,build/*,*.a
 
 " Highlight the 101st column, in order to help visually avoid long lines.
 set colorcolumn=101
@@ -58,6 +58,9 @@ highlight ColorColumn ctermbg=235
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 let c_space_errors=1
+
+" Underline the current line.
+set cursorline
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins start.
@@ -70,6 +73,8 @@ call plug#begin('~/.vim/plugged')
 " in order to rebuilding the cache across sessions.
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-f>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_files = 0
