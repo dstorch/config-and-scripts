@@ -65,6 +65,9 @@ set cursorline
 " Read files in automatically when they change.
 set autoread
 
+" Allow switching away from unsaved buffers.
+set hidden
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins start.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
