@@ -10,4 +10,4 @@ VARIANTS=enterprise-rhel-62-64-bit
 MSG=$(git log --pretty=oneline --abbrev-commit | head -n 1)
 echo $MSG
 
-evergreen patch -y -p $PROJECT -d "$MSG" --variants="$VARIANTS"
+evergreen patch -y -p $PROJECT -d "$MSG" --variants="$VARIANTS" -a required
