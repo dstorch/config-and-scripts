@@ -12,4 +12,4 @@ BASE_REV=$(git log --pretty=oneline HEAD~$BASE_REV_NUM | head -n 1 | cut -d " " 
 
 FLAGS="--oauth2 -H 'mongodbcr.appspot.com' -y --check-clang-format --check-eslint --jira_user david.storch --git_similarity=100"
 
-echo python2 $HOME/kernel-tools/codereview/upload.py $FLAGS -t \"$MSG\" --rev $BASE_REV
+echo python3 $HOME/kernel-tools/codereview/upload.py $FLAGS -t \"$MSG\" --rev $BASE_REV

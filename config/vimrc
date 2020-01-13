@@ -69,6 +69,9 @@ set autoread
 " Allow switching away from unsaved buffers.
 set hidden
 
+" Don't create backup files.
+set noswapfile
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins start.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -101,7 +104,7 @@ nmap <silent> <c-c> :ccl<CR>
 
 " Clang format. Map ctrl-i to format the current file. Map both in normal and visual mode.
 Plug 'https://github.com/rhysd/vim-clang-format'
-let g:clang_format#command = 'clang-format-3.8'
+let g:clang_format#command = 'clang-format-7.0.1'
 let g:clang_format#auto_format = 1
 nmap <silent> <c-i> :ClangFormat<CR>
 vmap <silent> <c-i> :ClangFormat<CR>
