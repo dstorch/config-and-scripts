@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Script for running scons (without ninja).
+#
+# Scons variables will be loaded from ~/.scons/site_scons/mongo_custom_variables.py.
+#
+# Any additional arguments for scons can be passed as arguments to this script, and will be passed
+# through.
+
+echo "Contents of ~/.scons/site_scons/mongo_custom_variables.py"
+cat ~/.scons/site_scons/mongo_custom_variables.py
+
+python3 buildscripts/scons.py --link-model=dynamic --allocator=system "$@"
