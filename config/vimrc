@@ -72,6 +72,11 @@ set hidden
 " Don't create backup files.
 set noswapfile
 
+" No need for compatibility with old vi.
+set nocompatible
+
+filetype off
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins start.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -80,9 +85,9 @@ set noswapfile
 call plug#begin('~/.vim/plugged')
 
 " Fuzzy finder. Vim integration with 'fzf' command line utility. Configure cntrl-f for finding
-" files. Configure 'ag' as the search command used by fzf.
-Plug 'https://github.com/junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+" files.
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 nmap <silent> <c-f> :Files<CR>
 
 " Easy alternation between cpp and header file with :A.
@@ -112,10 +117,6 @@ vmap <silent> <c-i> :ClangFormat<CR>
 " Fancy status line.
 Plug 'https://github.com/vim-airline/vim-airline'
 
-" Autocompletion! oblitum's fork adds argument hints.
-Plug 'https://github.com/oblitum/YouCompleteMe',
-        \ {'do': 'python3 ./install.py --clang-completer --system-libclang'}
-
 " Show information about lines added, modified, removed in the margin.
 Plug 'https://github.com/airblade/vim-gitgutter'
 
@@ -124,6 +125,18 @@ Plug 'https://github.com/tpope/vim-commentary'
 
 " Initialize plugin system.
 call plug#end()
+
+" Setup for Vundle. Set the runtime path to include Vundle and initialize.
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required.
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
+filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins end.

@@ -31,21 +31,13 @@ export VISUAL=/usr/bin/vim
 
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/bin/mongo-versions:$PATH
-# Haskell stack executables.
-export PATH=$HOME/.local/bin:$PATH
 
 alias -g smoke='python3 buildscripts/resmoke.py'
 
 # Ninja.
 export NINJA_STATUS='[%f/%t (%p) %es] ' # Format ninja status output.
-alias sconsninja='python3 buildscripts/scons.py MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" VARIANT_DIR=ninja CC=clang CXX=clang++ --link-model=dynamic --modules=ninja,enterprise --icecream build.ninja'
-alias sconsninjadebug='python3 buildscripts/scons.py MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" VARIANT_DIR=ninja CC=clang CXX=clang++ --dbg=on --opt=off --modules=ninja,enterprise --icecream debug.ninja'
-alias sconsninjagcc='python3 buildscripts/scons.py MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" VARIANT_DIR=ninja CC=/opt/mongodbtoolchain/v3/bin/gcc CXX=/opt/mongodbtoolchain/v3/bin/g++ --modules=ninja,enterprise --icecream gcc.ninja'
-alias sconsninjacommunity='python3 buildscripts/scons.py MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" VARIANT_DIR=ninja CC=clang CXX=clang++ --link-model=dynamic --modules=ninja --icecream community.ninja'
-alias nj='ninja -j 600 '
-alias njd='ninja -f debug.ninja -j 600 '
-alias njg='ninja -f gcc.ninja -j 600 '
-alias njc='ninja -f community.ninja -j 600 '
+alias sconsninja='python3 buildscripts/scons.py MONGO_VERSION="0.0.0" MONGO_GIT_HASH="unknown" VARIANT_DIR=ninja CC=/opt/mongodbtoolchain/v3/bin/gcc CXX=/opt/mongodbtoolchain/v3/bin/g++ --link-model=dynamic --modules=ninja,enterprise --allocator=system --icecream build.ninja'
+alias nj='ninja -j 500 '
 
 # tmux.
 alias tmux='TERM=screen-256color-bce tmux'
@@ -59,9 +51,6 @@ antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme robbyrussell
 antigen apply
-
-# fzf keybindings for fuzzy cntrl-r command history search.
-source /usr/share/fzf/key-bindings.zsh
 
 # Git aliases.
 alias g='git '
@@ -81,3 +70,6 @@ alias gri='git rebase -i '
 alias grm='git rebase master'
 alias gs='git status '
 alias gsh='git show '
+
+# fzf keybindings for fuzzy cntrl-r command history search.
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
