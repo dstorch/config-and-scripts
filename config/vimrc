@@ -77,6 +77,9 @@ set nocompatible
 
 filetype off
 
+" Toggle paste mode on and off with \p (keys pressed in sequence).
+set pastetoggle=<leader>p
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins start.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
