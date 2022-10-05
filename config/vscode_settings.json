@@ -1,0 +1,36 @@
+{
+    "workbench.colorTheme": "Default Dark+",
+
+    // Don't show tiny code map in the upper right.
+    "editor.minimap.enabled" : false,
+
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSave": true
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSave": true
+    },
+
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.formatting": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.intelliSenseEngine": "Disabled",
+
+    // Vertical line at 100 columns.
+    "editor.rulers": [
+        100
+    ],
+    "files.trimTrailingWhitespace": true,
+
+    "clangd.onConfigChanged": "restart",
+    "clangd.checkUpdates": true,
+    "clangd.arguments": [
+        "--header-insertion=never",
+        "--query-driver=/opt/mongodbtoolchain/*/bin/clang++"
+    ],
+    "githubPullRequests.fileListLayout": "tree",
+}
